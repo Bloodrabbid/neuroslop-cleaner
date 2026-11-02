@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Полка — учёт продуктов для маленьких кофеен</title>
+<!-- Пример «после»: тот же продукт, вычищенный по скиллу neuroslop-cleaner. Продукт вымышленный. -->
+<style>
+  :root {
+    --ink: #1c1f1d; --muted: #5b625e; --line: #d9ddd8; --paper: #f3f4f1; --card: #fbfbf9;
+    --accent: #1d5c4a; --accent-ink: #f3f4f1; --warn: #a3471d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Liberation Sans', 'Helvetica Neue', Arial, sans-serif; background: var(--paper); color: var(--ink); font-size: 17px; line-height: 1.55; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  h1, h2 { font-family: 'Lora', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+  nav { display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid var(--line); }
+  nav b { font-family: 'Lora', Georgia, serif; font-size: 22px; }
+  nav a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; }
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; padding: 64px 0 72px; }
+  h1 { font-size: 48px; line-height: 1.1; margin-bottom: 18px; }
+  .hero p { color: var(--muted); max-width: 30em; margin-bottom: 28px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  .primary { background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 12px 22px; border-radius: 6px; font-weight: 600; min-height: 48px; display: inline-flex; align-items: center; }
+  .link { color: var(--accent); font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+  .app { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; }
+  .app h3 { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  td { padding: 9px 0; border-top: 1px solid var(--line); }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .low td { color: var(--warn); font-weight: 600; }
+  .note { margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .how { border-top: 1px solid var(--line); padding: 56px 0; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+  h2 { font-size: 32px; line-height: 1.15; }
+  ol { list-style: none; display: grid; gap: 26px; }
+  ol b { display: block; margin-bottom: 4px; }
+  ol span { color: var(--muted); }
+  .price { border-top: 1px solid var(--line); padding: 56px 0; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+  .rows div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .rows div:first-child { border-top: 0; }
+  .rows small { display: block; color: var(--muted); font-size: 15px; }
+  .rows strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; color: var(--muted); font-size: 15px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: var(--muted); min-height: 44px; display: inline-flex; align-items: center; padding: 0 8px; }
+  @media (max-width: 760px) {
+    .hero, .how, .price { grid-template-columns: 1fr; gap: 28px; }
+    .hero { padding: 40px 0 48px; }
+    h1 { font-size: 34px; }
+    nav span a:not(:last-child) { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><b>Полка</b><span><a href="#how">Как работает</a><a href="#price">Цены</a><a href="#">Войти</a></span></nav>
+
+  <header class="hero">
+    <div>
+      <h1>Молоко закончится в среду. Полка скажет об этом в понедельник.</h1>
+      <p>Учёт продуктов для кофеен на 10–40 мест. Бариста отмечает остатки в конце смены — за две минуты с телефона, — а вы утром видите, что заказать поставщику.</p>
+      <div class="actions"><a class="primary" href="#">Попробовать 14 дней</a><a class="link" href="#how">Как это работает</a></div>
+    </div>
+    <div class="app" aria-label="Пример экрана приложения">
+      <h3>Остатки на 2 ноября, вечер</h3>
+      <table>
+        <tr class="low"><td>Молоко 3,2%</td><td class="n">6 л — на 2 дня</td></tr>
+        <tr><td>Зерно, Бразилия</td><td class="n">4,5 кг</td></tr>
+        <tr class="low"><td>Стаканы 300 мл</td><td class="n">120 шт. — на 1 день</td></tr>
+        <tr><td>Сироп ваниль</td><td class="n">2 бут.</td></tr>
+        <tr><td>Круассаны (заморозка)</td><td class="n">48 шт.</td></tr>
+      </table>
+      <p class="note">2 позиции нужно заказать до четверга</p>
+    </div>
+  </header>
+
+  <section class="how" id="how">
+    <h2>Как это работает</h2>
+    <ol>
+      <li><b>Вечером бариста вводит остатки</b><span>Список продуктов уже настроен под ваше меню, нужно только поправить числа.</span></li>
+      <li><b>Полка считает расход по дням недели</b><span>В пятницу молока уходит вдвое больше, чем во вторник, — прогноз это учитывает.</span></li>
+      <li><b>Утром вы получаете список заказа</b><span>Его можно переслать поставщику в Telegram одной кнопкой.</span></li>
+    </ol>
+  </section>
+
+  <section class="price" id="price">
+    <h2>Цены</h2>
+    <div class="rows">
+      <div><span>Одна точка<small>до 3 сотрудников</small></span><strong>990 ₽ / мес</strong></div>
+      <div><span>Две–пять точек<small>общий список закупок</small></span><strong>790 ₽ / мес за точку</strong></div>
+      <div><span>Первые 14 дней<small>без привязки карты</small></span><strong>бесплатно</strong></div>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Полка</span><span><a href="#">Telegram</a><a href="#">Почта</a><a href="#">Оферта</a></span></footer>
+</div>
+</body>
+</html>
